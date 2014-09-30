@@ -21,7 +21,7 @@ func TestServer(t *testing.T) {
 	srv := New(c)
 
 	// TODO Add these views in the creator function
-	srv.AddPublicRoute("/", srv.Root)
+	srv.AddUserRoute("/", srv.Root)
 	srv.AddPublicRoute("/login", srv.Login)
 	srv.AddPublicRoute("/logout", srv.Logout)
 

@@ -52,7 +52,7 @@ func (srv *Server) AddPublicRoute(route string, h PublicHandle) {
 }
 
 func (srv *Server) AddUserRoute(route string, h Handle) {
-	http.Handle(route, h)
+	http.Handle(route, &Handler{f: h, srv: srv})
 }
 
 func (srv *Server) ListenAndServe() error {
@@ -93,8 +93,11 @@ func New(c config.Config) (srv *Server) {
 // Handlers
 // ========
 
-func (srv *Server) Root(w http.ResponseWriter, r *http.Request) ServerError {
-	srv.ExecuteLayout(w, "root.html", nil)
+func (srv *Server) Root(w http.ResponseWriter, r *http.Request, user User) ServerError {
+	data := map[string]interface{}{
+		"User": user,
+	}
+	srv.ExecuteLayout(w, "root.html", data)
 	return nil
 }
 

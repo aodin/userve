@@ -8,6 +8,11 @@
     <div class="col-md-6">
       <h1>Root</h1>
       <p>Some awesome content</p>
+      {{ if .User.IsAuthenticated }}<p>Hello, {{ .User.Name }}<p>{{ end }}
+      <ul>
+        <li><a href="/login">Sign In</a></li>
+        {{ if .User.IsAuthenticated }}<li><a href="/logout">Sign out</a></li>{{ end }}
+      </ul>
     </div>
   </div>
 </div>

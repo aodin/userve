@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"github.com/aodin/volta/config"
 	"github.com/aodin/userve/server"
+	"github.com/aodin/volta/config"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 	srv := server.New(c)
 
 	// TODO Add these views in the creator function
-	srv.AddPublicRoute("/", srv.Root)
+	srv.AddUserRoute("/", srv.Root)
 	srv.AddPublicRoute("/login", srv.Login)
 	srv.AddPublicRoute("/logout", srv.Logout)
 
